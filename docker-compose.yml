@@ -22,8 +22,9 @@ services:
     build: .
     container_name: n8n-runners
     restart: unless-stopped
+    volumes:
+      - ./data/n8n:/home/node/.n8n
+      - ./data/output:/output
     environment:
       - N8N_RUNNERS_TASK_BROKER_URI=http://n8n-main:5679
       - N8N_RUNNERS_AUTH_TOKEN=${N8N_RUNNERS_AUTH_TOKEN}
-
-volumes: {}
